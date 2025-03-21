@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hsn_cybersec – Bandit</title><link>https://hanshnnn.github.io/hanshin-cyber/write-ups/overthewire/bandit/</link><description>Recent content in Bandit on hsn_cybersec</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 20 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hanshnnn.github.io/hanshin-cyber/write-ups/overthewire/bandit/index.xml" rel="self" type="application/rss+xml"/><item><title>Level 0 - 4</title><link>https://hanshnnn.github.io/hanshin-cyber/write-ups/overthewire/bandit/part-1/</link><pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate><guid>https://hanshnnn.github.io/hanshin-cyber/write-ups/overthewire/bandit/part-1/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hsn_cybersec – Bandit</title><link>https://example.org/write-ups/overthewire/bandit/</link><description>Recent content in Bandit on hsn_cybersec</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 20 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://example.org/write-ups/overthewire/bandit/index.xml" rel="self" type="application/rss+xml"/><item><title>Level 0 - 4</title><link>https://example.org/write-ups/overthewire/bandit/part-1/</link><pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate><guid>https://example.org/write-ups/overthewire/bandit/part-1/</guid><description>
 &lt;h2>Level 0 - Logging In&lt;span class="hx-absolute -hx-mt-20" id="level-0---logging-in">&lt;/span>
 &lt;a href="#level-0---logging-in" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;blockquote>
 &lt;p>❓Description&lt;/p>
@@ -132,7 +132,7 @@ title="Copy code"
 &lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
 &lt;/button>
 &lt;/div>
-&lt;/div></description></item><item><title>Level 5 - 9</title><link>https://hanshnnn.github.io/hanshin-cyber/write-ups/overthewire/bandit/part-2/</link><pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate><guid>https://hanshnnn.github.io/hanshin-cyber/write-ups/overthewire/bandit/part-2/</guid><description>
+&lt;/div></description></item><item><title>Level 5 - 9</title><link>https://example.org/write-ups/overthewire/bandit/part-2/</link><pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate><guid>https://example.org/write-ups/overthewire/bandit/part-2/</guid><description>
 &lt;h2>Level 5 - File Contents&lt;span class="hx-absolute -hx-mt-20" id="level-5---file-contents">&lt;/span>
 &lt;a href="#level-5---file-contents" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;blockquote>
 &lt;p>❓Description&lt;/p>
@@ -420,7 +420,7 @@ title="Copy code"
 &lt;/blockquote>
 &lt;p>
 &lt;img src="../bandit9-1.jpg" alt="img" loading="lazy" />&lt;br>
-the &lt;code>-u&lt;/code> only outputs lines that are unique in the input&lt;/p></description></item><item><title>Level 10 - 14</title><link>https://hanshnnn.github.io/hanshin-cyber/write-ups/overthewire/bandit/part-3/</link><pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate><guid>https://hanshnnn.github.io/hanshin-cyber/write-ups/overthewire/bandit/part-3/</guid><description>
+the &lt;code>-u&lt;/code> only outputs lines that are unique in the input&lt;/p></description></item><item><title>Level 10 - 14</title><link>https://example.org/write-ups/overthewire/bandit/part-3/</link><pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate><guid>https://example.org/write-ups/overthewire/bandit/part-3/</guid><description>
 &lt;h2>Level 10 - Human readable strings&lt;span class="hx-absolute -hx-mt-20" id="level-10---human-readable-strings">&lt;/span>
 &lt;a href="#level-10---human-readable-strings" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;blockquote>
 &lt;p>❓Description&lt;/p>
