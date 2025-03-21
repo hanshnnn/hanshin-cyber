@@ -1,0 +1,839 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hsn_cybersec – Bandit</title>
+    <link>http://localhost:1313/hanshin-cyber/write-ups/overthewire/bandit/</link>
+    <description>Recent content in Bandit on hsn_cybersec</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Mar 2025 00:00:00 +0000</lastBuildDate>
+    
+	  <atom:link href="http://localhost:1313/hanshin-cyber/write-ups/overthewire/bandit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Level 0 - 4</title>
+      <link>http://localhost:1313/hanshin-cyber/write-ups/overthewire/bandit/part-1/</link>
+      <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/hanshin-cyber/write-ups/overthewire/bandit/part-1/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Level 0 - Logging In&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-0---logging-in&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-0---logging-in&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Log into the game using SSH.&lt;br&gt;
+Host to be connected: bandit.labs.overthewire.org&lt;br&gt;
+Port: 2220&lt;/p&gt;
+&lt;p&gt;username: &lt;em&gt;bandit0&lt;/em&gt;&lt;br&gt;
+password: &lt;em&gt;bandit0&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;ssh&lt;/code&gt; is a program for logging into remote machine and also executing commands on remote machines. The objective of it is to provide secure and encrypted communications between two hosts, in this case, my pc and bandit server!&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I run &lt;code&gt;ssh -p 2220 bandit0@bandit.labs.overthewire.org&lt;/code&gt; in my Linux terminal to ssh into the machine&lt;/p&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit0-1.jpg&#34; alt=&#34;ssh command to log in&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-p 2220&lt;/code&gt; means specifying the port to connect&lt;br&gt;
+each level in bandit is formatted in &amp;ldquo;bandit&amp;lt;level&amp;gt;&amp;rdquo;, in this case &lt;strong&gt;bandit0&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;Level 1 - Read a File&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-1---read-a-file&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-1---read-a-file&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a file called - located in the home directory&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tip&lt;/strong&gt;: to quickly understand the details usage of command we can use &lt;code&gt;man&lt;/code&gt; command.
+
+    &lt;img src=&#34;../bandit1-1.jpg&#34; alt=&#34;man command example&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;From above &lt;code&gt;man&lt;/code&gt; command will basically list down the information and the flags that can be specified.&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;p&gt;Anyways, here we study some of the basic Linux commands that involve accessing contents from directories and files.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pwd&lt;/code&gt; ➡ short for &amp;ldquo;print working directory&amp;rdquo;, it displays the full path of your current dir in Linux. Also we can easily view it on the left next to the username. Exp. &lt;code&gt;bandit0@bandit:~$&lt;/code&gt;, here the ~ indicates the current working directory as the home directory of the user.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ls&lt;/code&gt; ➡ one of the most used command, &lt;code&gt;ls&lt;/code&gt; is used to list the contents of a directory, user is able to show files and directories. Below I list down some common options;&lt;br&gt;
+🚩&lt;code&gt;-a&lt;/code&gt;: Lists all files, including hidden ones (those starting with a &amp;ldquo;.&amp;rdquo;).&lt;br&gt;
+🚩&lt;code&gt;-l&lt;/code&gt;: Lists files in a long format, providing detailed information.&lt;br&gt;
+🚩&lt;code&gt;-R&lt;/code&gt;: Recursively lists the contents of subdirectories.&lt;br&gt;
+🚩&lt;code&gt;-t&lt;/code&gt;: Sorts files by modification time (newest first).&lt;br&gt;
+🚩&lt;code&gt;-r&lt;/code&gt;: Reverses the order of the output (e.g., from newest to oldest).&lt;br&gt;
+🚩&lt;code&gt;-h&lt;/code&gt;: Displays file sizes in a human-readable format (e.g., KB, MB).&lt;br&gt;
+🚩&lt;code&gt;-d&lt;/code&gt;: Lists the directory itself instead of its contents.&lt;br&gt;
+🚩&lt;code&gt;-1&lt;/code&gt;: Lists one file per line.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cat&lt;/code&gt; ➡ used for user to display, concatenate and create files in their terminal.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cat my_file.txt&lt;/code&gt; - print out file content&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cat file1.txt file2.txt &amp;gt; combined.txt&lt;/code&gt; - combine both file content into combined.txt&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cat &amp;gt; new_file.txt&lt;/code&gt; - create new file!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit1-2.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;There is a readme file in the directory, using &lt;code&gt;cat&lt;/code&gt; to print the content, and here is the flag :)&lt;/p&gt;
+&lt;h2&gt;Level 2 - Special Character Filename&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-2---special-character-filename&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-2---special-character-filename&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a file called spaces in this filename located in the home directory&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Since &amp;ldquo;-&amp;rdquo; is a special symbol (&lt;strong&gt;Standard Option Character&lt;/strong&gt;) in Linux, it is also not recommended to start any filename with this symbol.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To read &amp;ldquo;-&amp;rdquo; file, &lt;code&gt;cat -&lt;/code&gt; cant work
+
+    &lt;img src=&#34;../bandit2-1.png&#34; alt=&#34;pic&#34; loading=&#34;lazy&#34; /&gt;
+From this answer we know that to read this file with a special name, specify the full path:&lt;br&gt;
+
+    &lt;img src=&#34;../bandit2-2.jpg&#34; alt=&#34;alt&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h2&gt;Level 3 - Spaces in Filename&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-3---spaces-in-filename&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-3---spaces-in-filename&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a file called spaces in this filename located in the home directory&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Besides &amp;ldquo;-&amp;rdquo;, &amp;quot; &amp;quot; spaces in filename is also not encouraged:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit2@bandit:~$ cat spaces in this filename
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat: spaces: No such file or directory
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat: in: No such file or directory
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat: this: No such file or directory
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat: filename: No such file or directory&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;We can see that the terminal interpret the &lt;strong&gt;spaces as a new additional file name/command&lt;/strong&gt;.&lt;br&gt;
+Hence, to add spacial effect use:&lt;br&gt;
+✅ underscore ( _ )&lt;br&gt;
+✅ dash (-)&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To allow the terminal to interpret the filename as a single file I use &lt;code&gt;&amp;quot; &amp;quot;&lt;/code&gt;&lt;br&gt;
+
+    &lt;img src=&#34;../bandit3-1.jpg&#34; alt=&#34;solution lvl 3&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h2&gt;Level 4 - Hidden Stuff&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-4---hidden-stuff&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-4---hidden-stuff&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a hidden file in the inhere directory&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As seen in &lt;a href=&#34;#level-1---read-a-file&#34; &gt;study note&lt;/a&gt;, since &lt;code&gt;inhere&lt;/code&gt; is a hidden directory we use flag -a to show all directory:
+
+    &lt;img src=&#34;../bandit4-1.jpg&#34; alt=&#34;alt&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Observation&lt;/strong&gt;&lt;br&gt;
+🟡 upon entering the directory, using &lt;code&gt;ls&lt;/code&gt; shoes nothing too&amp;hellip;&lt;br&gt;
+🟡 using -a flag again we finally found the file with password&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit3@bandit:~/inhere$ cat ...Hiding-From-You
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Level 5 - 9</title>
+      <link>http://localhost:1313/hanshin-cyber/write-ups/overthewire/bandit/part-2/</link>
+      <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/hanshin-cyber/write-ups/overthewire/bandit/part-2/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Level 5 - File Contents&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-5---file-contents&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-5---file-contents&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;we study into &lt;code&gt;file&lt;/code&gt; command:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;used to identify the type of file by &lt;strong&gt;examining its content&lt;/strong&gt; rather than extension&lt;/li&gt;
+&lt;li&gt;Displays a human-readable format &lt;em&gt;(e.g., &amp;ldquo;ASCII text&amp;rdquo;)&lt;/em&gt; or a MIME type &lt;em&gt;(e.g., &amp;ldquo;text/plain; charset=us-ascii&amp;rdquo;)&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Since we are at file commands:
+
+    &lt;img src=&#34;../bandit5-1.jpg&#34; alt=&#34;some file commands (from google)&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In the description we are hinted on &lt;strong&gt;only human-readable&lt;/strong&gt; file, we use &lt;code&gt;file&lt;/code&gt; command&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit4@bandit:~/inhere$ file ./*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./-file00: data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./-file01: data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./-file02: data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./-file03: data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./-file04: data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./-file05: data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./-file06: data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./-file07: ASCII text
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./-file08: data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./-file09: data
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Got it✅&lt;br&gt;
+
+    &lt;img src=&#34;../bandit5-2.jpg&#34; alt=&#34;solution lvl5&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h2&gt;Level 6 - A Specific File&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-6---a-specific-file&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-6---a-specific-file&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored somewhere on the server and has all of the following properties:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;owned by user bandit7&lt;/li&gt;
+&lt;li&gt;owned by group bandit6&lt;/li&gt;
+&lt;li&gt;33 bytes in size&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;find&lt;/code&gt; command is a very powerful tool provided by Linux, offering a wide array of options for searching files and directories&lt;/p&gt;
+&lt;p&gt;Now we look into the basic options that make this command powerful:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-name&lt;/code&gt;&lt;br&gt;
+Searches for files and directories matching a specific name pattern (case-sensitive).&lt;br&gt;
+💡 &lt;code&gt;find . -name &amp;quot;example.txt&amp;quot;&lt;/code&gt; Searches the &lt;strong&gt;current and subdirectories&lt;/strong&gt; for a file named &amp;ldquo;example.txt&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-iname&lt;/code&gt;&lt;br&gt;
+Case-insensitive version of &amp;ldquo;-name&amp;rdquo;&lt;br&gt;
+💡 &lt;code&gt;find . -iname &amp;quot;example.txt&amp;quot;&lt;/code&gt;: Searches for &amp;ldquo;example.txt&amp;rdquo; regardless of case.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-type&lt;/code&gt;&lt;br&gt;
+Specifies the type of file to search for (e.g., &lt;strong&gt;f&lt;/strong&gt; for regular files, &lt;strong&gt;d&lt;/strong&gt; for directories).&lt;br&gt;
+💡 &lt;code&gt;find . -type f&lt;/code&gt;: Finds all regular files in the current directory.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-path&lt;/code&gt;&lt;br&gt;
+Searches for files or directories whose full path matches the pattern&lt;br&gt;
+💡 &lt;code&gt;find /home -path &amp;quot;/home/user/documents/*&amp;quot;&lt;/code&gt;: Searches for files in the &lt;em&gt;/home/user/&lt;/em&gt; documents directory.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-size&lt;/code&gt;&lt;br&gt;
+Finds files of a specific size&lt;br&gt;
+💡 &lt;code&gt;find . -size +10M&lt;/code&gt;: Finds all files larger than 10MB.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-user&lt;/code&gt;&lt;br&gt;
+Finds files owned by a specific user.&lt;br&gt;
+💡 &lt;code&gt;find . -user john&lt;/code&gt;: Finds all files owned by the user &amp;ldquo;john&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-group&lt;/code&gt;&lt;br&gt;
+Finds files belonging to a specific group.&lt;br&gt;
+💡 &lt;code&gt;find . -group staff&lt;/code&gt;: Finds all files belonging to the group &amp;ldquo;staff&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-perm&lt;/code&gt;&lt;br&gt;
+Finds files with specific permissions.
+💡 &lt;code&gt;find . -perm 755&lt;/code&gt;: Finds all files with read, write, and execute permissions for owner, group, and others.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let&amp;rsquo;s see what is in the directory&lt;/p&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit6-1.jpg&#34; alt=&#34;files&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Since there is a lot of folders, it is not really feasible to cd into them one by one, let&amp;rsquo;s directly &lt;code&gt;find&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit6-2.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Found it! Just not sure why it says here owned by bandit5 but not 6 lol.&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit5@bandit:~/inhere$ cat ./maybehere07/.file2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;HWasnPhtq9AVKe0dmk45nxy20cvUa6EG&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Level 7 - No Permission&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-7---no-permission&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-7---no-permission&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored somewhere on the server and has all of the following properties:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;owned by user bandit7&lt;/li&gt;
+&lt;li&gt;owned by group bandit6&lt;/li&gt;
+&lt;li&gt;33 bytes in size&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We look into &lt;a href=&#34;https://linuxjourney.com/lesson/file-permissions&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;strong&gt;file permission&lt;/strong&gt;&lt;/a&gt;, which is the fundamental concept in Linux system:&lt;/p&gt;
+&lt;p&gt;Take an example:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;drwxr-xr-x  1 john staff 3771 Mar 31  2024 .bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;john (third column) - user&lt;br&gt;
+staff(forth column) - group&lt;/p&gt;
+&lt;p&gt;Breaking down  &lt;code&gt;d | rwx | r-x | r-x &lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;d&lt;/code&gt; indicates filetypd - in this case &lt;strong&gt;d&lt;/strong&gt; irectory. If for regular file is &lt;code&gt;a&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Permissions are groups into 3 bits each - user | group | other&lt;/li&gt;
+&lt;li&gt;Permission glossary:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;r&lt;/code&gt;: readable&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w&lt;/code&gt;: writable&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;x&lt;/code&gt;: executable (basically an executable program)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-&lt;/code&gt;: empty&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We try finding&lt;/p&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit7-1.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Seems like there were a bunch of files across server fitting to the criteria, but we don&amp;rsquo;t have access&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-orange-100 hx-bg-orange-50 hx-text-orange-800 dark:hx-border-orange-400/30 dark:hx-bg-orange-400/20 dark:hx-text-orange-300&#34;&gt;
+  &lt;div class=&#34;ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2&#34;&gt;&lt;div class=&#34;hx-select-none hx-text-xl&#34; style=&#34;font-family: &#39;Apple Color Emoji&#39;, &#39;Segoe UI Emoji&#39;, &#39;Segoe UI Symbol&#39;;&#34;&gt;❓&lt;/div&gt;&lt;/div&gt;
+
+  &lt;div class=&#34;hx-w-full hx-min-w-0 hx-leading-7&#34;&gt;
+    &lt;div class=&#34;hx-mt-6 hx-leading-7 first:hx-mt-0&#34;&gt;What&amp;rsquo;s the difference of find &lt;code&gt;.&lt;/code&gt; and find &lt;code&gt;/&lt;/code&gt; ?&lt;br&gt;
+Ans: &lt;code&gt;find .&lt;/code&gt; means you want to find files based on current directory;&lt;br&gt;
+&lt;code&gt;find /&lt;/code&gt; means you want to find from root directory.&lt;br&gt;
+&lt;code&gt;find *&lt;/code&gt; means &amp;ldquo;start with the visible contents of the directory&amp;rdquo;. A depth of 0 will be each of the visible items in the directory.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To remove the noise of &lt;strong&gt;Permission denied&lt;/strong&gt; error, we append &lt;code&gt;2&amp;gt;/dev/null&lt;/code&gt;&lt;br&gt;
+This redirects any error messages (standard error stream) to /dev/null, effectively discarding them. This is useful for ignoring permission errors or other issues that might occur during the search.&lt;/p&gt;
+&lt;div class=&#34;hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-orange-100 hx-bg-orange-50 hx-text-orange-800 dark:hx-border-orange-400/30 dark:hx-bg-orange-400/20 dark:hx-text-orange-300&#34;&gt;
+  &lt;div class=&#34;ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2&#34;&gt;&lt;div class=&#34;hx-select-none hx-text-xl&#34; style=&#34;font-family: &#39;Apple Color Emoji&#39;, &#39;Segoe UI Emoji&#39;, &#39;Segoe UI Symbol&#39;;&#34;&gt;❓&lt;/div&gt;&lt;/div&gt;
+
+  &lt;div class=&#34;hx-w-full hx-min-w-0 hx-leading-7&#34;&gt;
+    &lt;div class=&#34;hx-mt-6 hx-leading-7 first:hx-mt-0&#34;&gt;&lt;p&gt;What are the types of errors?&lt;br&gt;
+Ans: Every program we run on the command line automatically has three data streams connected to it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;STDIN (0)&lt;/strong&gt; - Standard input (data fed into the program)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;STDOUT (1)&lt;/strong&gt; - Standard output (data printed by the program, defaults to the terminal)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;STDERR (2)&lt;/strong&gt; - Standard error (for error messages, also defaults to the terminal)&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Coming back&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c 2&amp;gt;/dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/var/lib/dpkg/info/bandit7.password
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;bandit6@bandit:~$ cat /var/lib/dpkg/info/bandit7.password
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Level 8 - Find a word&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-8---find-a-word&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-8---find-a-word&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt next to the word millionth&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;How to find certain word/text in a file?&lt;br&gt;
+👍🏼&lt;code&gt;grep&lt;/code&gt; command👍🏼&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;grep &amp;quot;error&amp;quot; logfile.txt&lt;/code&gt; ➡ searches for lines containing &amp;ldquo;error&amp;rdquo; in logfile.txt&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Option&lt;/th&gt;
+          &lt;th&gt;Key&lt;/th&gt;
+          &lt;th&gt;Feature&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Case-insensitive search&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;-i&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;for case-insensitive searching&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Recursive Search&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;-r&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;searching recursively with directories&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Line Number&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;-n&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;to display the line number with matching line&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Count Matches&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;-c&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;count the number of matching lines&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Invert Match&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;-v&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;to display lines that don&amp;rsquo;t match the pattern&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Exact Match&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;-w&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;find exact word matches&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Context&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;-A, -B, -C&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;display lines before, after, or both around the matching line&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We can see data.txt is wayyyy too large for us to search manually&lt;/p&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit7-2.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;use grep:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit7@bandit:~$ grep &amp;#34;millionth&amp;#34; data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;millionth       dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Level 9 - Only once&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-9---only-once&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-9---only-once&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt and is the only line of text that occurs only once&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The &lt;code&gt;uniq&lt;/code&gt; command in Linux is used to filter out or report repeated lines in a file. It is commonly used in conjunction with the &lt;code&gt;sort&lt;/code&gt; command because &lt;code&gt;uniq&lt;/code&gt; only detects duplicate lines that are adjacent. Therefore, for the most effective use, lines should be sorted before using &lt;code&gt;uniq&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit9-1.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;br&gt;
+the &lt;code&gt;-u&lt;/code&gt; only outputs lines that are unique in the input&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Level 10 - 14</title>
+      <link>http://localhost:1313/hanshin-cyber/write-ups/overthewire/bandit/part-3/</link>
+      <pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/hanshin-cyber/write-ups/overthewire/bandit/part-3/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Level 10 - Human readable strings&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-10---human-readable-strings&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-10---human-readable-strings&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The &lt;code&gt;strings&lt;/code&gt; command is designed to find and print sequences of printable characters (strings) within a file, particularly useful when dealing with binary files that might contain embedded text.&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit10-1.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;
+We can see that data.txt contains binary matches when trying to &lt;code&gt;grep&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Hence, we can you &lt;code&gt;strings&lt;/code&gt; to filter out the printable char in the file&lt;/p&gt;
+&lt;h2&gt;Level 11 - Base64 coded&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-11---base64-coded&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-11---base64-coded&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt, which contains base64 encoded data.&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Since I have been constantly encountering it, let&amp;rsquo;s take this good chance to have a more comprehensive understanding of &lt;strong&gt;base64 Encoding&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Base64 is an encoding scheme that transforms binary data ➡ printable chracters.&lt;/p&gt;
+&lt;p&gt;🤔 WHY USE IT?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;some systems are restricted to ASCII characters&lt;/li&gt;
+&lt;li&gt;some characters having meaning that might differ from system to system&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;p&gt;🤔 WHEN TO USE IT?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;imcompatible data is transmitted through network (eg. image attachement in emails)&lt;/li&gt;
+&lt;li&gt;imcompatible data needs to be stored in files or cookies, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-yellow-100 hx-bg-yellow-50 hx-text-yellow-900 dark:hx-border-yellow-200/30 dark:hx-bg-yellow-700/30 dark:hx-text-yellow-200&#34;&gt;
+  &lt;div class=&#34;ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2&#34;&gt;&lt;div class=&#34;hx-select-none hx-text-xl&#34; style=&#34;font-family: &#39;Apple Color Emoji&#39;, &#39;Segoe UI Emoji&#39;, &#39;Segoe UI Symbol&#39;;&#34;&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+
+  &lt;div class=&#34;hx-w-full hx-min-w-0 hx-leading-7&#34;&gt;
+    &lt;div class=&#34;hx-mt-6 hx-leading-7 first:hx-mt-0&#34;&gt;base64 is actually costly instrument - &lt;strong&gt;33%&lt;/strong&gt; larger of memory consumption. Hence despite of its usefulness, only use it when necessary&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;p&gt;Coming back to &lt;strong&gt;base64 command in linux&lt;/strong&gt; 😯&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;encoding&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ echo -n &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Hello, World!&amp;#39;&lt;/span&gt; | base64
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; SGVsbG8sIFdvcmxkIQ==
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;decoding&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ base64 -d &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; SGVsbG8sIFdvcmxkIQo&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Hello, World!
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let&amp;rsquo;s look into data.txt raw content:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit10@bandit:~$ cat data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;VGhlIHBhc3N3b3JkIGlzIGR0UjE3M2ZaS2IwUlJzREZTR3NnMlJXbnBOVmozcVJyCg==
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-orange-100 hx-bg-orange-50 hx-text-orange-800 dark:hx-border-orange-400/30 dark:hx-bg-orange-400/20 dark:hx-text-orange-300&#34;&gt;
+  &lt;div class=&#34;ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2&#34;&gt;&lt;div class=&#34;hx-select-none hx-text-xl&#34; style=&#34;font-family: &#39;Apple Color Emoji&#39;, &#39;Segoe UI Emoji&#39;, &#39;Segoe UI Symbol&#39;;&#34;&gt;💭&lt;/div&gt;&lt;/div&gt;
+
+  &lt;div class=&#34;hx-w-full hx-min-w-0 hx-leading-7&#34;&gt;
+    &lt;div class=&#34;hx-mt-6 hx-leading-7 first:hx-mt-0&#34;&gt;As you can tell base64 encoded string ends in &lt;code&gt;==&lt;/code&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;p&gt;now, use base64 command to decode this&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit10@bandit:~$ base64 -d &amp;lt;&amp;lt;&amp;lt; cat data.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Level 12 - ROT13&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-12---rot13&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-12---rot13&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/ROT13&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ROT13&lt;/a&gt; is a simple letter substitution cipher that replaces a letter with the 13th letter after it in the Latin alphabet.&lt;/p&gt;
+&lt;p&gt;One of the earliest form of crytography as it is developed way back in ancient Rome ;p&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit12-1.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h2&gt;Level 13 - Hexdump&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-13---hexdump&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-13---hexdump&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;File signature&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;📁 is a unique dequence of bytes at the beginning of a file that identifies its format,even if the file extension is missing/incorrect&lt;br&gt;
+📁 You can find these signature at the beginning of the file&lt;br&gt;
+      Example&lt;br&gt;
+      - JEPG file: &lt;code&gt;FF D8 FF E0&lt;/code&gt;&lt;br&gt;
+      - PDF file: &lt;code&gt;25 50 44 46&lt;/code&gt;&lt;br&gt;
+      - Windows exec file: &lt;code&gt;4D 5A&lt;/code&gt;&lt;br&gt;
+📁We can analyse file signature by &lt;strong&gt;comparing the digital signatures&lt;/strong&gt; of files against a database of known malicious signatures to identify and flag potentially harmful or suspicious files.&lt;/p&gt;
+&lt;div class=&#34;hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-orange-100 hx-bg-orange-50 hx-text-orange-800 dark:hx-border-orange-400/30 dark:hx-bg-orange-400/20 dark:hx-text-orange-300&#34;&gt;
+  &lt;div class=&#34;ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2&#34;&gt;&lt;div class=&#34;hx-select-none hx-text-xl&#34; style=&#34;font-family: &#39;Apple Color Emoji&#39;, &#39;Segoe UI Emoji&#39;, &#39;Segoe UI Symbol&#39;;&#34;&gt;❓&lt;/div&gt;&lt;/div&gt;
+
+  &lt;div class=&#34;hx-w-full hx-min-w-0 hx-leading-7&#34;&gt;
+    &lt;div class=&#34;hx-mt-6 hx-leading-7 first:hx-mt-0&#34;&gt;&lt;p&gt;Why is file signature important&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;for computer to determine the correct application to open a file&lt;/li&gt;
+&lt;li&gt;ensure data integrity from corruption or tampering&lt;/li&gt;
+&lt;li&gt;use to &lt;a href=&#34;https://cyberpedia.reasonlabs.com/EN/file%20signature%20analysis.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;identify and prevent malware &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;HexDumps&lt;/strong&gt;&lt;br&gt;
+🔢is a textual representation of computar data (typically binary), in hexdecimal format&lt;/p&gt;
+&lt;p&gt;🔢How to read&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;00000000&lt;/span&gt;  &lt;span style=&#34;color:#ae81ff&#34;&gt;48&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;65&lt;/span&gt; 6c 6c 6f &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;77&lt;/span&gt; 6f &lt;span style=&#34;color:#ae81ff&#34;&gt;72&lt;/span&gt; 6c &lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;21&lt;/span&gt;  Hello world!&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;00000000&lt;/code&gt; is the hexadecimal address.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;48 65 6c 6c 6f 20 77 6f 72 6c 64 21&lt;/code&gt; are the hexadecimal values of the bytes.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Hello world!&lt;/code&gt; is the ASCII representation of the bytes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;🔢&lt;code&gt;xxd&lt;/code&gt; command&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;used for creating and analyzing hexadecimal dumps from files&lt;/li&gt;
+&lt;li&gt;example
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;xxd hello.txt &amp;gt; hexdump.txt&lt;/code&gt;: converting hello.txt into hexdump and store in hexdump.txt&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;xxd -r hexdump.txt &amp;gt; reversed.txt&lt;/code&gt;: reverse back&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a hard level 💀 Let&amp;rsquo;s break down into steps for easier intepretation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;STEP 1: MAKE TEMP DIR&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As advised I create a temporary directory to store the files in the process of solving, using &lt;code&gt;mktemp&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit13-3.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;
+Then copy &lt;code&gt;cp&lt;/code&gt; data.txt from home directory and rename it &lt;code&gt;mv&lt;/code&gt; for easier refence&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;STEP 2: GZIP FILE&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;First inspect the hexdump file, we can &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_file_signatures&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;idenitfy the file signature&lt;/a&gt; &lt;code&gt;1f8b&lt;/code&gt;&lt;br&gt;
+
+    &lt;img src=&#34;../bandit13-1.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;br&gt;
+By looking up the list of file signature, we can recognize that the file is a &lt;code&gt;gzip&lt;/code&gt; file, what we have to do is decompress it.&lt;br&gt;
+
+    &lt;img src=&#34;../bandit13-2.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;In order to decompress, we first have to reverse hexdump.txt and rename the right extension to reverse&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.3Afnq04SOj$ xxd -r hexdump.txt reversed
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.3Afnq04SOj$ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hexdump.txt  reversed
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bandit12@bandit:/tmp/tmp.3Afnq04SOj$ mv reversed reversed.gz    &lt;span style=&#34;color:#75715e&#34;&gt;# rename with right extension&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;By decompressing reversed.gz using &lt;code&gt;gzip -d&lt;/code&gt; we get&lt;br&gt;
+
+    &lt;img src=&#34;../bandit13-4.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s hexdump view of our decompressed file, we get &lt;code&gt;425a&lt;/code&gt; file signature, by checking up&lt;br&gt;
+
+    &lt;img src=&#34;../bandit13-5.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;STEP 3: BZIP2 FILE&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Follow the same procedure~&lt;br&gt;
+✅ rename to right extension: &lt;code&gt;mv reversed reversed.bz2&lt;/code&gt;&lt;br&gt;
+✅ decompres: &lt;code&gt;bzip2 -d reversed.bz2&lt;/code&gt;&lt;br&gt;
+✅ inspect the new file: &lt;code&gt;cat&lt;/code&gt;&lt;br&gt;
+✅ check for file signature: &lt;code&gt;xxd reversed &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;
+    &lt;img src=&#34;../bandit13-6.jpg&#34; alt=&#34;IMG&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;hmm&amp;hellip; seems like another gzip file&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;STEP 4: ANOTHER GZIP FILE&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;same process, we get
+
+    &lt;img src=&#34;../bandit13-7.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;
+we can see data5.bin appearing, and 6461 seems to not be in the list&amp;hellip;&lt;br&gt;
+Maybe I can try using &lt;code&gt;file&lt;/code&gt; command to inspect&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;STEP 5: TAR ARCHIVE&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Got it, the reversed file is a tar achieve object&lt;br&gt;
+
+    &lt;img src=&#34;../bandit13-8.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;
+By decompressing it with &lt;code&gt;tar -xvf reversed&lt;/code&gt;, we see data5.bin being extracted out&lt;br&gt;
+Repeat it with data5.bin comes out data6.bin (it&amp;rsquo;s a rabit hole legit😣)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;STEP 6: ANOTHER TAR ARCHIVE&lt;/strong&gt;&lt;br&gt;
+By checking the content of data6.bin, still doesn&amp;rsquo;t look right (haih)
+
+    &lt;img src=&#34;../bandit13-9.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;So, continue extracting data6.bin (out of words)
+
+    &lt;img src=&#34;../bandit13-10.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;
+Discovering data8.bin (yay)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;STEP 6: LAST GZIP FILE&lt;/strong&gt;&lt;br&gt;
+Using &lt;code&gt;file&lt;/code&gt; command we know data8 is gzip, just decompress
+
+    &lt;img src=&#34;../bandit13-11.jpg&#34; alt=&#34;img&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;👏🏼👏🏼👏🏼GET&lt;/p&gt;
+&lt;div class=&#34;hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-blue-200 hx-bg-blue-100 hx-text-blue-900 dark:hx-border-blue-200/30 dark:hx-bg-blue-900/30 dark:hx-text-blue-200&#34;&gt;
+  &lt;div class=&#34;ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2&#34;&gt;&lt;div class=&#34;hx-select-none hx-text-xl&#34; style=&#34;font-family: &#39;Apple Color Emoji&#39;, &#39;Segoe UI Emoji&#39;, &#39;Segoe UI Symbol&#39;;&#34;&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+
+  &lt;div class=&#34;hx-w-full hx-min-w-0 hx-leading-7&#34;&gt;
+    &lt;div class=&#34;hx-mt-6 hx-leading-7 first:hx-mt-0&#34;&gt;You can determine that it will likely be one of those formats by looking at the first few bytes. You should then test to see if it is one of those, using an integrity check from the associated utility for that format, or by actually proceeding to decompress.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;Level 14 - COPY PRIVATE KEY TO LOCAL&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;level-14---copy-private-key-to-local&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#level-14---copy-private-key-to-local&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+  &lt;p&gt;❓Description&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;📔Study&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If we want to transfer files from remote host to local host, how do we do? 🤔&lt;br&gt;
+Ans: &lt;code&gt;scp&lt;/code&gt; command&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Secure Copy (scp)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;used for securely transferring files between a local and remote system, or between two remote systems, using SSH for encryption and authentication&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Syntax:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;scp &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;options&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[[&lt;/span&gt;user@&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;src_host:&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;file1 &lt;span style=&#34;color:#f92672&#34;&gt;[[&lt;/span&gt;user@&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;dest_host:&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;file2&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50&#34;
+    title=&#34;Copy code&#34;
+  &gt;
+    &lt;div class=&#34;copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;[options]&lt;/code&gt;: flags to customize the command&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[user@]src_host:&lt;/code&gt;: Specifies the source host (IP address or domain name) and optionally the username for authentication.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;file1&lt;/code&gt;: The file or directory to be copied from the source.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[[user@]dest_host:]file2&lt;/code&gt;: Specifies the destination host and optionally the username for authentication, and the destination path or filename.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Flags:&lt;br&gt;
+🚩&lt;code&gt;-r&lt;/code&gt;: Recursively copies entire directories and their contents.&lt;br&gt;
+🚩&lt;code&gt;-P &amp;lt;port&amp;gt;&lt;/code&gt;: Specifies the port number to use for the SSH connection.&lt;br&gt;
+🚩&lt;code&gt;-i &amp;lt;identity_file&amp;gt;&lt;/code&gt;: Uses a specific private key file for authentication instead of the default SSH key.&lt;br&gt;
+🚩&lt;code&gt;-p&lt;/code&gt;: Preserves modification times, access times, and ownership.&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 Solution&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
