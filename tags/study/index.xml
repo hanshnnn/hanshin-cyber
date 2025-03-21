@@ -1,0 +1,172 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hsn_cybersec – Study</title><link>https://hanshnnn.github.io/hanshin-cyber/tags/study/</link><description>Recent content in Study on hsn_cybersec</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 21 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hanshnnn.github.io/hanshin-cyber/tags/study/index.xml" rel="self" type="application/rss+xml"/><item><title>Server Side Security Notes</title><link>https://hanshnnn.github.io/hanshin-cyber/research-study/post1/</link><pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate><guid>https://hanshnnn.github.io/hanshin-cyber/research-study/post1/</guid><description>
+&lt;p>Hello, this is my first reseach-study blog post ;p Currently solving a server side security wargame (doing the writeup soon)&lt;/p>
+&lt;h2>Robots Exclusion Protocol&lt;span class="hx-absolute -hx-mt-20" id="robots-exclusion-protocol">&lt;/span>
+&lt;a href="#robots-exclusion-protocol" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;div class="hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-blue-200 hx-bg-blue-100 hx-text-blue-900 dark:hx-border-blue-200/30 dark:hx-bg-blue-900/30 dark:hx-text-blue-200">
+&lt;div class="ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2">&lt;div class="hx-select-none hx-text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
+&lt;div class="hx-w-full hx-min-w-0 hx-leading-7">
+&lt;div class="hx-mt-6 hx-leading-7 first:hx-mt-0">Standard used by websites to indicate which portions of website are allowed to visit&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;ul>
+&lt;li>
+&lt;p>for web crawlers and robots&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>robots.txt&lt;/code> can be found &lt;a href="https://www.example.com/robots.txt" target="_blank" rel="noopener">https://www.example.com/robots.txt&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>the robots will try to fetch this file and read the instruction, if the file doesn&amp;rsquo;t exist means → no restrictions&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3>AI restrictions&lt;span class="hx-absolute -hx-mt-20" id="ai-restrictions">&lt;/span>
+&lt;a href="#ai-restrictions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>web operators start to ban robots collecting data to train AI models. In 2023, Originality.AI found that 306 of the thousand most-visited websites blocked &lt;a href="https://en.wikipedia.org/wiki/OpenAI" target="_blank" rel="noopener">OpenAI&lt;/a>&amp;rsquo;s GPTBot in their robots.txt file.&lt;/p>
+&lt;p>In 2023, blog host &lt;a href="https://en.wikipedia.org/wiki/Medium_%28website%29" target="_blank" rel="noopener">Medium&lt;/a> announced it would deny access to all artificial intelligence web crawlers as &amp;ldquo;AI companies have leached value from writers in order to spam Internet readers&amp;rdquo;. -
+&lt;a href="https://www.theverge.com/24067997/robots-txt-ai-text-file-web-crawlers-spiders" target="_blank" rel="noopener">https://www.theverge.com/24067997/robots-txt-ai-text-file-web-crawlers-spiders&lt;/a>&lt;/p>
+&lt;h3>Format Example&lt;span class="hx-absolute -hx-mt-20" id="format-example">&lt;/span>
+&lt;a href="#format-example" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>Allow all content&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-jsx" data-lang="jsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">User&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">agent&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">*&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Disallow&lt;/span>&lt;span style="color:#f92672">:&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>or&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-jsx" data-lang="jsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">User&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">agent&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">*&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Allow&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>or even a missing robots.txt file&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>All robots to stay out&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-jsx" data-lang="jsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">User&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">agent&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">*&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Disallow&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;/li>
+&lt;li>
+&lt;p>Not to enter certain directories&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-jsx" data-lang="jsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">User&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">agent&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">*&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Disallow&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">/cgi-bin/&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Disallow&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">/tmp/&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Disallow&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">/junk/&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;/li>
+&lt;li>
+&lt;p>Not to enter one file&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-jsx" data-lang="jsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">User&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">agent&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">*&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Disallow&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">/directory/file.html&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Specific&lt;/strong> robot “example: BadBot” to stay out&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-jsx" data-lang="jsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">User&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">agent&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">BadBot&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Disallow&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;/li>
+&lt;/ol>
+&lt;p>Combined example&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-jsx" data-lang="jsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">User&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">agent&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">googlebot&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">#&lt;/span> &lt;span style="color:#a6e22e">all&lt;/span> &lt;span style="color:#a6e22e">Google&lt;/span> &lt;span style="color:#a6e22e">services&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Disallow&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">/private/&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">#&lt;/span> &lt;span style="color:#a6e22e">disallow&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span> &lt;span style="color:#a6e22e">directory&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">User&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">agent&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">googlebot&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">news&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">#&lt;/span> &lt;span style="color:#a6e22e">only&lt;/span> &lt;span style="color:#a6e22e">the&lt;/span> &lt;span style="color:#a6e22e">news&lt;/span> &lt;span style="color:#a6e22e">service&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Disallow&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">/ # disallow everything&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">User&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">agent&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">#&lt;/span> &lt;span style="color:#a6e22e">any&lt;/span> &lt;span style="color:#a6e22e">robot&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Disallow&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">/something/&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">#&lt;/span> &lt;span style="color:#a6e22e">disallow&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span> &lt;span style="color:#a6e22e">directory&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>From the above example, all Google services are not allowed to access /private/ directory, news services are not allowed to access the whole site. Meanwhile any robots are not allowed to access /something/&lt;/p>
+&lt;h2>Command injection&lt;span class="hx-absolute -hx-mt-20" id="command-injection">&lt;/span>
+&lt;a href="#command-injection" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;div class="hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-blue-200 hx-bg-blue-100 hx-text-blue-900 dark:hx-border-blue-200/30 dark:hx-bg-blue-900/30 dark:hx-text-blue-200">
+&lt;div class="ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2">&lt;div class="hx-select-none hx-text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
+&lt;div class="hx-w-full hx-min-w-0 hx-leading-7">
+&lt;div class="hx-mt-6 hx-leading-7 first:hx-mt-0">command injection is a type of attach, the goal is to execute arbitrary commands on host operating system&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Happens when:&lt;/p>
+&lt;ul>
+&lt;li>application passes unsafe user-supplied data like forms, cookies&lt;/li>
+&lt;li>insufficient input validation&lt;/li>
+&lt;/ul>
+&lt;p>Example:&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#a6e22e">php&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $ip &lt;span style="color:#f92672">=&lt;/span> $_GET[&lt;span style="color:#e6db74">&amp;#39;ip&amp;#39;&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">system&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;ping -c 4 &amp;#34;&lt;/span> &lt;span style="color:#f92672">.&lt;/span> $ip);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">?&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>If the attacker inputs &lt;code>8.8.8.8; cat /etc/passwd&lt;/code> , then it will pass to server hence executing &lt;code>cat /etc/passwd&lt;/code>&lt;/p>
+&lt;h3>Tools&lt;span class="hx-absolute -hx-mt-20" id="tools">&lt;/span>
+&lt;a href="#tools" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;li>&lt;a href="https://github.com/commixproject/commix" target="_blank" rel="noopener">commixproject/commix&lt;/a> - Automated All-in-One OS command injection and exploitation tool&lt;/li>
+&lt;li>&lt;a href="https://github.com/projectdiscovery/interactsh" target="_blank" rel="noopener">projectdiscovery/interactsh&lt;/a> - An OOB interaction gathering server and client librarys&lt;/li>
+&lt;/ul></description></item></channel></rss>
