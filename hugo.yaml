@@ -63,3 +63,5 @@ params:
 
 
 enableInlineShortcodes: true
+
+baseURL: "https://hanshnnn.github.io/hanshin-cyber/"
