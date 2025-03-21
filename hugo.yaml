@@ -1,3 +1,65 @@
 baseURL: https://example.org/
 languageCode: en-us
-title: My New Hugo Site
+title: hsn_cybersec
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+menu:
+  main:
+    - name: WriteUps
+      pageRef: /write-ups
+      weight: 1
+    - name: Projects
+      pageRef: /projects
+      weight: 2
+    - name: Research
+      pageRef: /research-study
+      weight: 3
+    - name: Milestone
+      pageRef: /milestones
+      weight: 4
+    - name: Search
+      weight: 5
+      params:
+        type: search
+    - name: LinkedIn
+      weight: 6
+      url: "https://www.linkedin.com/in/kekhanshin/"
+      params:
+        icon: linkedin 
+
+markup:
+  # allow raw html
+  goldmark:
+    renderer:
+      unsafe: true
+
+params:
+  description: Han Shin's personal & cybersecurity portfolio
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: images/logo.svg
+      dark: images/logo-dark.svg
+      width: 30
+      height: 30
+      
+  blog:
+    list:
+      displayTags: true
+      # date | lastmod | publishDate | title | weight
+      sortBy: date
+      sortOrder: desc # or "asc"
+    
+    article:
+      displayPagination: true
+          
+  # Display the last modification date
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
+
+
+enableInlineShortcodes: true

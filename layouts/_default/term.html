@@ -1,0 +1,62 @@
+{{ define "main" }}
+<div class='hx-mx-auto hx-flex {{ partial "utils/page-width" . }}'>
+    {{ partial "toc.html" (dict "Params" (dict "toc" false)) }}
+
+    <!-- Tags Sidebar -->
+    <div class="hx-w-64 hx-shrink-0 hx-pt-8 hx-px-6 max-lg:hx-hidden">
+        <div class="hx-sticky hx-top-[calc(var(--navbar-height)+1.5rem)] hx-pb-8">
+            <div class="hextra-feature-card not-prose hx-block hx-relative hx-overflow-hidden hx-rounded-3xl hx-border hx-border-gray-200 dark:hx-border-neutral-800 before:hx-pointer-events-none before:hx-absolute before:hx-inset-0 before:hx-bg-glass-gradient"
+                style="background: radial-gradient(ellipse at 50% 80%,#c8d9e636,hsla(0,0%,100%,0));">
+                <div class="hx-relative hx-w-full hx-p-6">
+                    <h3
+                        class="hx-text-2xl hx-font-medium hx-leading-6 hx-mb-4 hx-text-slate-900 dark:hx-text-slate-100">
+                        Topics</h3>
+                    <ul class="hx-space-y-2">
+                        {{ $tags := $.Site.Taxonomies.tags }}
+                        {{ range $name, $taxonomy := $tags }}
+                        {{ $count := len $taxonomy.Pages }}
+                        <li class="hx-transition-all hx-duration-200">
+                            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}"
+                                class="hx-flex hx-items-center hx-justify-between hx-rounded-lg hx-px-3 hx-py-1 hx-text-sm hx-text-gray-500 dark:hx-text-gray-400 hover:hx-bg-gray-100 dark:hover:hx-bg-neutral-800 hover:hx-text-[color:hsl(var(--primary-hue),100%,50%)] hx-transition-all hx-duration-200">
+                                <span class="hx-font-medium">🔖 {{ $name }}</span>
+                                <span
+                                    class="hx-bg-gray-200 dark:hx-bg-neutral-700 hx-rounded-full hx-px-2 hx-py-0.5 hx-text-xs hx-transition-all hx-duration-200 group-hover:hx-bg-[color:hsl(var(--primary-hue),80%,90%)] dark:group-hover:hx-bg-[color:hsl(var(--primary-hue),30%,30%)]">{{
+                                    $count }}</span>
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <article
+        class="hx-break-words hx-flex hx-min-h-[calc(100vh-var(--navbar-height))] hx-min-w-0 hx-justify-center hx-pb-8 hx-pr-[calc(env(safe-area-inset-right)-1.5rem)]" style="min-width: 60%;">
+        <main class="hx-w-full hx-min-w-0 hx-max-w-6xl hx-px-6 hx-pt-4 md:hx-px-12">
+            <br class="hx-mt-1.5 hx-text-sm" />
+            {{ if .Title }}<h1
+                class="hx-text-center hx-mt-2 hx-text-4xl hx-font-bold hx-tracking-tight hx-text-slate-900 dark:hx-text-slate-100">
+                {{ .Title }}</h1>{{ end }}
+            <div class="hx-mb-16"></div>
+            <div class="content">
+                {{ .Content }}
+            </div>
+            <div>
+                {{- range .Pages -}}
+                <div>
+                    <h3>
+                        <a style="color: inherit; text-decoration: none;"
+                            class="hx-block hx-font-semibold hx-mt-8 hx-text-2xl" href="{{ .RelPermalink }}"
+                            title="{{ .LinkTitle }}">
+                            {{ .Title }}
+                        </a>
+                    </h3>
+                    <p class="hx-opacity-50 hx-text-sm hx-leading-7">{{ partial "utils/format-date" .Date }}</p>
+                </div>
+                {{- end -}}
+            </div>
+        </main>
+    </article>
+</div>
+{{ end }}
