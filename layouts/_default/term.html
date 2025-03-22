@@ -16,7 +16,7 @@
                         {{ range $name, $taxonomy := $tags }}
                         {{ $count := len $taxonomy.Pages }}
                         <li class="hx-transition-all hx-duration-200">
-                            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}"
+                            <a href="{{ "/hanshin-cyber/tags/" | relLangURL }}{{ $name | urlize }}"
                                 class="hx-flex hx-items-center hx-justify-between hx-rounded-lg hx-px-3 hx-py-1 hx-text-sm hx-text-gray-500 dark:hx-text-gray-400 hover:hx-bg-gray-100 dark:hover:hx-bg-neutral-800 hover:hx-text-[color:hsl(var(--primary-hue),100%,50%)] hx-transition-all hx-duration-200">
                                 <span class="hx-font-medium">🔖 {{ $name }}</span>
                                 <span
