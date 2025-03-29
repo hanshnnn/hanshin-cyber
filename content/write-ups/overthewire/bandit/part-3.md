@@ -1,9 +1,9 @@
 ---
 title: Level 10 - 14
 weight: 5
-date: 2025-03-20
+date: 2025-03-25
 prev: /write-ups/overthewire/bandit/part-2
-next: /
+next: /write-ups/overthewire/bandit/part-4
 ---
 
 ## Level 10 - Human readable strings
@@ -290,3 +290,31 @@ Flags:
 
 > 💡 Solution  
 
+Basically in the description we know the key to log into next level is using [private SSH key](https://jumpcloud.com/blog/what-are-ssh-keys), unlike other levels' password authentication approach.
+
+Now transfer the `sshkey.private` from the remote server to our local machine:
+
+```bash
+$ scp -P 2220 bandit13@bandit.labs.overthewire.org:sshkey.private .         
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit13@bandit.labs.overthewire.org's password: 
+sshkey.private  
+```
+Now the file is in my local file system
+![img](bandit14-1.jpg)
+
+Now I tried logging in the next level using the copied private key file, but getting below error
+![img](bandit14-2.jpg)
+
+Permissions are too open, as said. Now I have to reduce the permissions with `chmod` command:
+
+![img](bandit14-3.jpg)
+
+With `chmod 700`, I basically limit read write execute permission to **only for owner**
+
+Now use ssh with `-i` option to log in
+
+```bash
+$ ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
+```
