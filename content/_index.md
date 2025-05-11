@@ -24,7 +24,7 @@ layout: hextra-home
 </div>
 
 <div class="hx-mb-6">
-{{< hextra/hero-button text="About me" link="/" >}}
+{{< hextra/hero-button text="About me" link="/hanshin-cyber/about-me" >}}
 </div>
 
 {{< /hextra/hero-container >}}
@@ -51,7 +51,7 @@ layout: hextra-home
     class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[250px]"
     image="projects.jpg"
     imageClass="hx-top-[35%] hx-left-[24px] hx-w-[180%] sm:hx-w-[110%] dark:hx-opacity-80"
-    link="/hanshin-cyber"
+    link="/hanshin-cyber/projects"
     style="background: radial-gradient(ellipse at 50% 80%,rgba(97, 113, 254, 0.15),hsla(0,0%,100%,0));"
   >}}
   {{< hextra/feature-card

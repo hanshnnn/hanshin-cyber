@@ -72,7 +72,7 @@ From above;
 2. Echo the password after establishing `nc` connection, as mentioned above the default address for localhost is `127.0.0.1`
 
 
-## Level 15 - Sending Message to Port
+## Level 16 - Secure Connection with SSL
 
 > ❓Description  
 
@@ -82,3 +82,62 @@ The password for the next level can be retrieved by submitting the password of t
 
 ---
 > 📔Study
+
+🔐 **OpenSLL**  
+is a cryptographic library that enables an open source implementation of Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols
+
+
+It's function includes
+- encrypt data
+- certificate management
+- secure web server deployment
+- random numer generation
+
+{{< callout emoji="🤔" >}}
+  What is the difference between netcat and OpenSSL s_client?
+{{< /callout >}}
+![img](bandit16-1.png)
+
+---
+> 💡 Solution
+
+Establish secure connection using openSSL with `openssl` command
+
+```bash
+openssl s_client -connect localhost:30001
+```
+By sending the password for current level, the server then responds back with password for next level:)\
+
+![img](bandit16-2.png)
+
+## Level 17 - 
+
+> ❓Description  
+
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL/TLS and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
+
+<br>
+
+---
+> 📔Study
+
+This level involves 🔍port scanning🔍
+
+**Port scanning** is a technique used to identify which ports on a target server are open, which indicate potential vulnerabilities and services running on those ports.
+
+How the scanning works?  
+- Port scanners send packets to a range of ports (0-65535) and analyze the responses to determine which ports are open, closed, or filtered.   
+- Open ports indicate that a service or application is listening on that port, while closed ports indicate that no service is listening. 
+- Filtered ports indicate that a firewall or other security device is blocking access to those ports. 
+
+Some common port scanning tools include: Nmap, Netcat, PortSentry, etc
+
+We dive more into **Network Mapper**, famously known as `nmap`~  
+It offers a lot of advantages:  
+- quickly recognize the devices (like servers, routers, switches, etc)on single or multiple networks
+- identify services running on a system
+- detect application versions to detect existing vulnerabilities
+- find info about the operating system running
+
+Read more in [Nmap Commands Cheat Sheet](https://stationx-public-download.s3.us-west-2.amazonaws.com/nmap_cheet_sheet_v7.pdf)
+
