@@ -16,8 +16,8 @@ menu:
     - name: Research
       pageRef: /research-study
       weight: 3
-    - name: Milestone
-      pageRef: /milestones
+    - name: About
+      pageRef: /about-me
       weight: 4
     - name: Search
       weight: 5
